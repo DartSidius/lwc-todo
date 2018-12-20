@@ -1,0 +1,9 @@
+:host {
+
+}
+.slds-nav-vertical__action {
+    padding: .5rem 1.5rem .5rem 1rem
+}
+lightning-icon {
+    margin-right: .5rem; 
+}

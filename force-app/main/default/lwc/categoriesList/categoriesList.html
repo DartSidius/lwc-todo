@@ -1,22 +1,22 @@
 <template>
     <lightning-card title="Categories" icon-name="custom:custom62">
+        <nav class="slds-nav-vertical">
+            <div class="slds-nav-vertical__section">
+                <ul>
+                    <template for:each={categories} for:item="category">
+                        <li key={category.Id} class="slds-nav-vertical__item">
+                            <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-describedby="entity-header"
+                                aria-current="page">
+                                <lightning-icon icon-name={category.icon} size="small" alternative-text={category.label}></lightning-icon>
+                                <span>{category.label}</span>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </nav>
         <div class="slds-m-around_medium">
-            <ul>
-                <template for:each={categories} for:item="item">
-                    <li key={item.Id}>
-                        <lightning-icon
-                            icon-name={item.icon}
-                            size="xx-small"
-                            alternative-text={item.label}>
-                        </lightning-icon>
-                        <span>{item.label}</span>
-                    </li>
-                </template>
-            </ul>
-            <lightning-button 
-                variant="brand" 
-                label="+ New List" 
-                title="New List">
+            <lightning-button variant="brand" label="+ New List" title="New List">
             </lightning-button>
         </div>
     </lightning-card>
