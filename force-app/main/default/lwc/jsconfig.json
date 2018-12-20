@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/app": [
+                "app/app.js"
+            ],
+            "c/categories-list": [
+                "categoriesList/categoriesList.js"
+            ],
+            "c/tasks-list": [
+                "tasksList/tasksList.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ]
+}

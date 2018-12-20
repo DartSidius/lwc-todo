@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Categories" icon-name="custom:custom62">
+        <div class="slds-m-around_medium">
+            <ul>
+                <template for:each={categories} for:item="item">
+                    <li key={item.Id}>
+                        <lightning-icon
+                            icon-name={item.icon}
+                            size="xx-small"
+                            alternative-text={item.label}>
+                        </lightning-icon>
+                        <span>{item.label}</span>
+                    </li>
+                </template>
+            </ul>
+            <lightning-button 
+                variant="brand" 
+                label="+ New List" 
+                title="New List">
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>
