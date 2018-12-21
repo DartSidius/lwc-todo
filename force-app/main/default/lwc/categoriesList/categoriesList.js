@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, track } from 'lwc';
 
 export default class CategoriesList extends LightningElement {
     categories = [
@@ -23,4 +23,9 @@ export default class CategoriesList extends LightningElement {
             icon: "standard:task"
         }
     ];
+    @track isCreateFormOpened = false;
+
+    showCreateForm(event) {
+        this.isCreateFormOpened = !this.isCreateFormOpened;
+    }
 }

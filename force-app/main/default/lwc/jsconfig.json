@@ -9,6 +9,12 @@
             "c/categories-list": [
                 "categoriesList/categoriesList.js"
             ],
+            "c/create-form": [
+                "createForm/createForm.js"
+            ],
+            "c/task": [
+                "task/task.js"
+            ],
             "c/tasks-list": [
                 "tasksList/tasksList.js"
             ]

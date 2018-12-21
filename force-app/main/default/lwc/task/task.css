@@ -1,0 +1,28 @@
+.task:hover {
+    background-color: rgba(21, 137, 238, 0.1);
+}
+.task-container {
+    padding: .1rem 1rem;
+    border-bottom: 1px solid #e5e5e5;
+    min-height: 52px; 
+    display: flex;
+    align-items: center;
+}
+.task-title-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.task-title {
+    font-size: 14px;
+    color: #34373d;
+}
+.task-details .slds-item {
+    color: #767678;
+    font-size: 12px;
+}
+.task-status-checkbox {
+    cursor: pointer;
+}
+.mark-as-important-btn {
+    margin-left: auto; 
+} 

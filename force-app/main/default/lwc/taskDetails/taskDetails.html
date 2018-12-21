@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Task details" icon-name="custom:custom62">
+        <div slot="actions">
+            <lightning-button-icon-stateful
+                class="mark-as-important-btn"
+                icon-name="utility:favorite"
+                alternative-text="Mark as important"
+                onclick={markAsImportant}>
+            </lightning-button-icon-stateful>
+        </div>
+
+        <section class="task-details-content-section">
+            <template for:each={steps} for:item="step">
+                <c-task-step key={step.Id} step={step}></c-task-step>
+            </template>
+            <div class="slds-p-around_medium">
+                <div if:false={isCreateFormOpened}>
+                    <lightning-button variant="brand" label="+ New step" title="New step" onclick={showCreateForm}>
+                    </lightning-button>
+                </div>
+                <div if:true={isCreateFormOpened}>
+                    <c-create-form></c-create-form>
+                </div>
+            </div>
+        </section>
+
+        <section class="task-details-content-section">
+            <button class="add-to-list-btn">
+                + Add to "My day"
+            </button>
+        </section>
+
+        <section class="task-details-content-section">
+            <div class="add-task-notes-form">
+                <lightning-textarea name="Notes" label="" placeholder="Add some notes..."></lightning-textarea>
+                <lightning-button-group>
+                    <lightning-button name="addNotesBtn" variant="brand" label="Save" disabled></lightning-button>
+                </lightning-button-group>
+            </div>
+        </section>
+    </lightning-card>
+</template>

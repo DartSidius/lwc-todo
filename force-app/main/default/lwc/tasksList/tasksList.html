@@ -1,5 +1,16 @@
 <template>
     <lightning-card title="Tasks" icon-name="custom:custom26">
-        
+        <template for:each={tasks} for:item="task">
+            <c-task key={task.Id} task={task}></c-task>
+        </template>
+        <div class="slds-p-around_medium">
+            <div if:false={isCreateFormOpened}>
+                <lightning-button variant="brand" label="+ New Task" title="New Task" onclick={showCreateForm}>
+                </lightning-button>
+            </div>
+            <div if:true={isCreateFormOpened}>
+                <c-create-form></c-create-form>
+            </div>
+        </div>
     </lightning-card>
 </template>

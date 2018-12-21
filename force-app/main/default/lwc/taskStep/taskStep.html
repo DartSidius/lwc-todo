@@ -1,0 +1,20 @@
+<template>
+    <div class="step">
+        <div class="step-container">
+            <lightning-input class="step-status-checkbox" type="checkbox" onchange={changeStepStatus} label="" name="isDone"></lightning-input>
+            <div class="step-title-wrapper">
+                <span class="step-title" if:false={isStepDone}>{step.title}</span>
+                <span class="step-title" if:true={isStepDone}>
+                    <strike>{step.title}</strike>
+                </span>
+            </div>
+            <lightning-button-icon
+                    class="remove-step-btn"
+                    variant="bare"
+                    icon-name="utility:close"
+                    alternative-text="Remove"
+                    onclick={removeStep}>
+            </lightning-button-icon>
+        </div>
+    </div>
+</template>

@@ -15,9 +15,14 @@
                 </ul>
             </div>
         </nav>
-        <div class="slds-m-around_medium">
-            <lightning-button variant="brand" label="+ New List" title="New List">
-            </lightning-button>
+        <div class="slds-p-around_medium">
+            <div if:false={isCreateFormOpened}>
+                <lightning-button variant="brand" label="+ New List" title="New List" onclick={showCreateForm}>
+                </lightning-button>
+            </div>
+            <div if:true={isCreateFormOpened}>
+                <c-create-form></c-create-form>
+            </div>
         </div>
     </lightning-card>
 </template>

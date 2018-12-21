@@ -1,0 +1,34 @@
+<template>
+    <div class="task">
+        <div class="task-container">
+            <lightning-input class="task-status-checkbox" type="checkbox" onchange={changeTaskStatus} label="" name="isDone"></lightning-input>
+            <div class="task-title-wrapper">
+                <span class="task-title" if:false={isTaskDone}>{task.title}</span>
+                <span class="task-title" if:true={isTaskDone}>
+                    <strike>{task.title}</strike>
+                </span>
+                <div class="task-details" if:true={isTaskDetails}>
+                    <ul class="slds-list_horizontal slds-has-dividers_right">
+                        <li class="slds-item" if:true={task.details.steps}>{task.details.steps}</li>
+                        <li class="slds-item" if:true={task.details.deadline}>
+                            <lightning-formatted-date-time value={task.details.deadline}></lightning-formatted-date-time>
+                        </li>
+                        <li class="slds-item" if:true={task.details.remind}>
+                            <lightning-icon icon-name="utility:notification" size="xx-small" alternative-text="Notifier"></lightning-icon>     
+                        </li>
+                        <li class="slds-item" if:true={task.details.notes}>
+                            <lightning-icon icon-name="utility:file" size="xx-small" alternative-text="Notifier"></lightning-icon>     
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <lightning-button-icon-stateful
+                    class="mark-as-important-btn"
+                    icon-name="utility:favorite"
+                    selected={task.isImportant}
+                    alternative-text="Mark as important"
+                    onclick={markAsImportant}>
+            </lightning-button-icon-stateful>
+        </div>
+    </div>
+</template>

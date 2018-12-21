@@ -1,0 +1,10 @@
+.new-task-container {
+    padding: .1rem 1rem;
+    min-height: 52px; 
+    display: flex;
+    align-items: center;
+}
+.new-task-form-wrapper {
+    display: flex;
+    flex-direction: column;
+}
