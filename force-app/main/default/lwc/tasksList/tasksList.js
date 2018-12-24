@@ -1,7 +1,7 @@
 import { LightningElement, track } from 'lwc';
 
 export default class TasksList extends LightningElement {
-    tasks = [
+    @track tasks = [
         {
             Id: 1,
             title: "Task1",
@@ -32,4 +32,14 @@ export default class TasksList extends LightningElement {
             }
         }
     ];
+
+    handleSaveTask(event) {
+        this.tasks.push({
+                Id: this.tasks.length + 1,
+                title: event.detail,
+                isDone: false, 
+                isImportant: false,
+                details: {}
+            });
+    }
 }

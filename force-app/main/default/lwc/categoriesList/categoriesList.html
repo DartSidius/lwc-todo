@@ -2,24 +2,22 @@
     <lightning-card title="Categories" icon-name="custom:custom62">
         <nav class="slds-nav-vertical">
             <div class="slds-nav-vertical__section">
-                <ul>
-                    <template for:each={categories} for:item="category">
-                        <li key={category.Id} class="slds-nav-vertical__item">
-                            <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-describedby="entity-header"
-                                aria-current="page">
-                                <lightning-icon icon-name={category.icon} size="small" alternative-text={category.label}></lightning-icon>
-                                <span>{category.label}</span>
-                            </a>
-                        </li>
-                    </template>
-                </ul>
+                <template for:each={categories} for:item="category">
+                    <span key={category.Id}  class="slds-nav-vertical__item">
+                        <input type="radio" id={category.Id} name="category" value={category.label} />
+                        <label class="slds-nav-vertical__action" for={category.Id}>
+                            <lightning-icon icon-name={category.icon} size="small" alternative-text={category.label}></lightning-icon>
+                            <span class="slds-nav-vertical_radio-faux">{category.label}</span>
+                        </label>
+                    </span>
+                </template>
             </div>
         </nav>
         <div class="slds-p-around_medium">
             <c-create-form
                 btn-label = "New List"
                 input-label= "List name"
-                onsave={handleSave}>
+                onsave={handleSaveCategory}>
             </c-create-form>
         </div>
     </lightning-card>

@@ -18,5 +18,6 @@ export default class CreateForm extends LightningElement {
         this.dispatchEvent(new CustomEvent("save", {
             detail: valueToSave
         }));
+        this.template.querySelector(".input-text").value = "";
     }
 }

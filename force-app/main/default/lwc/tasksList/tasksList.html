@@ -1,12 +1,21 @@
 <template>
     <lightning-card title="Tasks" icon-name="custom:custom26">
+        <div slot="actions">
+            <lightning-button-icon
+                class=""
+                icon-name="utility:threedots"
+                alternative-text="Settings">
+            </lightning-button-icon>
+        </div>
+
         <template for:each={tasks} for:item="task">
             <c-task key={task.Id} task={task}></c-task>
         </template>
         <div class="slds-p-around_medium">
             <c-create-form
                 btn-label = "New Task"
-                input-label= "Task name">
+                input-label= "Task name"
+                onsave={handleSaveTask}>
             </c-create-form>
         </div>
     </lightning-card>

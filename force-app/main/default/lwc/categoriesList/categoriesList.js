@@ -1,7 +1,7 @@
 import { LightningElement, track } from 'lwc';
 
 export default class CategoriesList extends LightningElement {
-    categories = [
+    @track categories = [
         {
             Id: 1,
             label: "My day",
@@ -24,7 +24,11 @@ export default class CategoriesList extends LightningElement {
         }
     ];
 
-    handleSave(event) {
-        
+    handleSaveCategory(event) {
+        this.categories.push({
+            Id: this.categories.length + 1,
+            label: event.detail,
+            icon: "standard:lead_list"
+        });
     }
 }
