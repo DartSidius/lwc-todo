@@ -15,9 +15,4 @@ export default class TaskDetails extends LightningElement {
             title: "step3"
         },
     ];
-    @track isCreateFormOpened = false;
-
-    showCreateForm(event) {
-        this.isCreateFormOpened = !this.isCreateFormOpened;
-    }
 }

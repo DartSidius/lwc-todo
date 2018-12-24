@@ -23,9 +23,8 @@ export default class CategoriesList extends LightningElement {
             icon: "standard:task"
         }
     ];
-    @track isCreateFormOpened = false;
 
-    showCreateForm(event) {
-        this.isCreateFormOpened = !this.isCreateFormOpened;
+    handleSave(event) {
+        
     }
 }

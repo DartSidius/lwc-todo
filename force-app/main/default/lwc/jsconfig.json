@@ -15,8 +15,14 @@
             "c/task": [
                 "task/task.js"
             ],
+            "c/task-details": [
+                "taskDetails/taskDetails.js"
+            ],
             "c/tasks-list": [
                 "tasksList/tasksList.js"
+            ],
+            "c/task-step": [
+                "taskStep/taskStep.js"
             ]
         }
     },

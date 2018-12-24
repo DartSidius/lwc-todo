@@ -1,11 +1,19 @@
 <template>
-    <lightning-input 
-        label="List name"
-        name="listName"
-        placeholder="Enter a list name">
-    </lightning-input>
-    <lightning-button-group>
-        <lightning-button variant="brand" label="Save"></lightning-button>
-        <lightning-button variant="distructive" label="Cancel"></lightning-button>
-    </lightning-button-group>
+    <div if:false={isCreateFormOpened}>
+        <lightning-button variant="brand" label={btnLabel} title="New List" onclick={toggleCreateForm}>
+        </lightning-button>
+    </div>
+
+    <div if:true={isCreateFormOpened}>
+        <lightning-input 
+            label={inputLabel}
+            name="objName"
+            placeholder={placeholder}
+            class="input-text">
+        </lightning-input>
+        <lightning-button-group>
+            <lightning-button variant="brand" onclick={save} label="Save"></lightning-button>
+            <lightning-button variant="distructive" label="Cancel" onclick={toggleCreateForm}></lightning-button>
+        </lightning-button-group>
+    </div>
 </template>

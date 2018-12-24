@@ -16,13 +16,11 @@
             </div>
         </nav>
         <div class="slds-p-around_medium">
-            <div if:false={isCreateFormOpened}>
-                <lightning-button variant="brand" label="+ New List" title="New List" onclick={showCreateForm}>
-                </lightning-button>
-            </div>
-            <div if:true={isCreateFormOpened}>
-                <c-create-form></c-create-form>
-            </div>
+            <c-create-form
+                btn-label = "New List"
+                input-label= "List name"
+                onsave={handleSave}>
+            </c-create-form>
         </div>
     </lightning-card>
 </template>

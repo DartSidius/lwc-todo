@@ -32,9 +32,4 @@ export default class TasksList extends LightningElement {
             }
         }
     ];
-    @track isCreateFormOpened = false;
-
-    showCreateForm(event) {
-        this.isCreateFormOpened = !this.isCreateFormOpened;
-    }
 }
