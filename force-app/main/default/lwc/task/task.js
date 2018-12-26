@@ -3,9 +3,32 @@ import { LightningElement, api, track } from 'lwc';
 export default class Task extends LightningElement {
     @api task;
     @track isTaskDone = false;
+    @track isImportant;
+
+    connectedCallback() {
+        this.isImportant = this.task.isImportant;
+    }
 
     markAsImportant() {
-        this.task.isImportant = !this.task.isImportant;
+        this.isImportant = !this.isImportant;
+        const actionType = this.isImportant ? "Add" : "Remove";
+
+        this.dispatchEvent(new CustomEvent("importantmark", {
+            detail: {
+                category: "Important",
+                action: actionType
+            },
+            bubbles: true,
+            composed: true
+        }));
+    }
+
+    selectTask() {
+        this.dispatchEvent(new CustomEvent("taskselect", {
+            detail: this.task,
+            bubbles: true,
+            composed: true
+        }));
     }
 
     changeTaskStatus(event) {

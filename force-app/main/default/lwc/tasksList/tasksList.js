@@ -8,10 +8,24 @@ export default class TasksList extends LightningElement {
             isImportant: true,
             isDone: false, 
             details: {
-                steps: '0 of 2',
+                stepsCompleted: '0 of 2',
                 deadline: '2020-10-10',
                 remind: '2020-10-09',
-                notes: 'Qwerty'
+                notes: 'Qwerty',
+                steps: [
+                    {
+                        Id: 1, 
+                        title: "step1"
+                    },
+                    {
+                        Id: 2, 
+                        title: "step2"
+                    },
+                    { 
+                        Id: 3, 
+                        title: "step3"
+                    }
+                ]
             }
         },
         {
@@ -27,8 +41,18 @@ export default class TasksList extends LightningElement {
             isDone: false, 
             isImportant: true,
             details: {
-                steps: '0 of 1',
-                deadline: '2020-10-10'
+                stepsCompleted: '0 of 2',
+                deadline: '2020-10-10',
+                steps: [
+                    {
+                        Id: 1, 
+                        title: "step1"
+                    },
+                    {
+                        Id: 2, 
+                        title: "step2"
+                    }
+                ]
             }
         }
     ];

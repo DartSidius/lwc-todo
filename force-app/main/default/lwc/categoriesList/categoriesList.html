@@ -8,11 +8,15 @@
                         <label class="slds-nav-vertical__action" for={category.Id}>
                             <lightning-icon icon-name={category.icon} size="small" alternative-text={category.label}></lightning-icon>
                             <span class="slds-nav-vertical_radio-faux">{category.label}</span>
+                            <div class="task-counter" if:true={category.tasks}>
+                                <lightning-badge label={category.tasks}></lightning-badge>
+                            </div>
                         </label>
                     </span>
                 </template>
             </div>
         </nav>
+        
         <div class="slds-p-around_medium">
             <c-create-form
                 btn-label = "New List"

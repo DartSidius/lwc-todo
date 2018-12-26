@@ -1,18 +1,26 @@
 <template>
-    <lightning-card title="Task details" icon-name="custom:custom62">
+    <lightning-card title={task.title} icon-name="custom:custom62">
         <div slot="actions">
             <lightning-button-icon-stateful
                 class="mark-as-important-btn"
                 icon-name="utility:favorite"
+                selected={task.isImportant}
                 alternative-text="Mark as important"
                 onclick={markAsImportant}>
             </lightning-button-icon-stateful>
         </div>
 
         <section class="task-details-content-section">
-            <template for:each={steps} for:item="step">
-                <c-task-step key={step.Id} step={step}></c-task-step>
-            </template>
+            <div if:true={task.details.steps}>
+                <template for:each={task.details.steps} for:item="step">
+                    <c-task-step key={step.Id} step={step}></c-task-step>
+                </template>
+            </div>
+
+            <!-- <div if:false={task.details.steps}>
+                <span>No steps mentioned</span>
+            </div> -->
+
             <div class="slds-p-around_medium">
                 <c-create-form
                     btn-label = "New step"
