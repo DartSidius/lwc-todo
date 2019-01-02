@@ -1,0 +1,19 @@
+.popover {
+    
+}
+.popover-container {
+    padding: .1rem;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 10px; 
+}
+.popover-title {
+    font: 14px sans-serif;
+    color: #000;
+}
+.popover-content {
+
+}
+.popover-footer {
+    
+}

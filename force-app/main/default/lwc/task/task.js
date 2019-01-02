@@ -24,8 +24,9 @@ export default class Task extends LightningElement {
     }
 
     selectTask() {
+        let task = Object.assign({}, this.task);
         this.dispatchEvent(new CustomEvent("taskselect", {
-            detail: this.task,
+            detail: task,
             bubbles: true,
             composed: true
         }));

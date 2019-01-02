@@ -24,14 +24,55 @@
             <div class="slds-p-around_medium">
                 <c-create-form
                     btn-label = "New step"
-                    input-label= "Step name">
+                    input-label = "Step name"
+                    onsave = {handleAddStep}>
                 </c-create-form>
             </div>
         </section>
 
+        <section class="task-details-content-section">  
+            <button class="task-detail-action-btn">
+                <lightning-icon icon-name="utility:dayview" size="small" alternative-text="Day"></lightning-icon>
+                Add to "My day"
+            </button>
+        </section>
+
         <section class="task-details-content-section">
-            <button class="add-to-list-btn">
-                + Add to "My day"
+            <button class="task-detail-action-btn task-detail-action-btn--bordered">
+                <lightning-icon icon-name="utility:reminder" size="small" alternative-text="Reminder"></lightning-icon>
+                <div>
+                    <span if:false={task.details.remind}>Add a reminder</span>
+
+                    <span if:true={task.details.remind}>
+                        <strong>Remind me on <lightning-formatted-date-time value={task.details.remind}></lightning-formatted-date-time></strong>
+                    </span>
+                </div>
+                <lightning-button-icon
+                    class="remove-btn"
+                    variant="bare"
+                    icon-name="utility:close"
+                    alternative-text="Remove"
+                    if:true={task.details.remind}
+                    onclick={removeReminder}>
+                </lightning-button-icon>
+            </button>
+            <button class="task-detail-action-btn task-detail-action-btn--bordered">
+                <lightning-icon icon-name="utility:date_time" size="small" alternative-text="Deadline"></lightning-icon> 
+                <div>
+                    <span if:false={task.details.deadline}>Add a deadline</span>
+
+                    <span if:true={task.details.deadline}>
+                        <strong>Deadline: <lightning-formatted-date-time value={task.details.deadline}></lightning-formatted-date-time></strong>
+                    </span>
+                </div>
+                <lightning-button-icon
+                    class="remove-btn"
+                    variant="bare"
+                    icon-name="utility:close"
+                    alternative-text="Remove"
+                    if:true={task.details.deadline}
+                    onclick={removeDeadline}>
+                </lightning-button-icon>
             </button>
         </section>
 
