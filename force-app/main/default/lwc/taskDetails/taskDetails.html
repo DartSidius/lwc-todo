@@ -1,88 +1,80 @@
 <template>
-    <lightning-card title={task.title} icon-name="custom:custom62">
-        <div slot="actions">
-            <lightning-button-icon-stateful
-                class="mark-as-important-btn"
-                icon-name="utility:favorite"
-                selected={task.isImportant}
-                alternative-text="Mark as important"
-                onclick={markAsImportant}>
-            </lightning-button-icon-stateful>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1"
+        class="slds-modal slds-fade-in-open custom-modal">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <lightning-button-icon class="slds-modal__close" icon-name="utility:close" variant="bare-inverse" onclick={close} alternative-text="Close window">
+                </lightning-button-icon>
+                <lightning-input class="step-status-checkbox" type="checkbox" onchange={changeTaskStatus} label="" name="isDone"></lightning-input>
+                <h2 id="modal-heading-01" class="slds-text-heading_small slds-hyphenate custom-modal__heading">{task.title}</h2>
+                <lightning-button-icon-stateful
+                    class="mark-as-important-btn"
+                    icon-name="utility:favorite"
+                    selected={task.isImportant}
+                    alternative-text="Mark as important"
+                    onclick={markAsImportant}>
+                </lightning-button-icon-stateful>
+            </header>
+
+            <div class="slds-modal__content slds-p-around_small" id="modal-content-id-1">
+                <lightning-tabset>
+                    <lightning-tab label="Basic settings">
+                        <section class="task-details-content-section">
+                            <button class="task-detail-action-btn">
+                                <lightning-icon icon-name="utility:dayview" size="small" alternative-text="Day"></lightning-icon>
+                                Add to "My day"
+                            </button>
+                        </section>
+                        <section class="task-details-content-section">
+                            <lightning-input type="datetime" name="Reminder" label="Reminder" value={task.details.remind}>   
+                            </lightning-input>
+                            <lightning-input type="datetime" name="Deadline" label="Deadline" value={task.details.deadline}>  
+                            </lightning-input>
+                        </section>
+                    </lightning-tab>
+                    <lightning-tab label="Subtasks">
+                        <section class="task-details-content-section">
+                            <div if:true={task.details.steps}>
+                                <template for:each={task.details.steps} for:item="step">
+                                    <c-task-step key={step.Id} step={step}></c-task-step>
+                                </template>
+                            </div>
+                        
+                            <div class="slds-p-around_medium">
+                                <c-create-form btn-label="New step" input-label="Step name" onsave={handleAddStep}>
+                                </c-create-form>
+                            </div>
+                        </section>
+                    </lightning-tab>
+                    <lightning-tab label="Notes">
+                        <section class="task-details-content-section">
+                            <div class="add-task-notes-form">
+                                <lightning-textarea name="Notes" label="" placeholder="Add some notes..."></lightning-textarea>
+                                <lightning-button-group>
+                                    <lightning-button name="addNotesBtn" variant="brand" label="Save" disabled></lightning-button>
+                                </lightning-button-group>
+                            </div>
+                        </section>
+                    </lightning-tab>
+                    <lightning-tab label="Attachments">
+                        <section class="task-details-content-section">
+                            <lightning-input name="Attachment" type="file" label="Attachment" multiple accept="image/png, .zip">
+                            </lightning-input>
+                        </section>
+                    </lightning-tab>
+                    <lightning-tab label="Share">
+                        <section class="task-details-content-section">
+                            Sharing
+                        </section>
+                    </lightning-tab>
+                </lightning-tabset>
+            </div>
+            
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral">Cancel</button>
+                <button class="slds-button slds-button_brand">Save</button>
+            </footer>
         </div>
-
-        <section class="task-details-content-section">
-            <div if:true={task.details.steps}>
-                <template for:each={task.details.steps} for:item="step">
-                    <c-task-step key={step.Id} step={step}></c-task-step>
-                </template>
-            </div>
-
-            <!-- <div if:false={task.details.steps}>
-                <span>No steps mentioned</span>
-            </div> -->
-
-            <div class="slds-p-around_medium">
-                <c-create-form
-                    btn-label = "New step"
-                    input-label = "Step name"
-                    onsave = {handleAddStep}>
-                </c-create-form>
-            </div>
-        </section>
-
-        <section class="task-details-content-section">  
-            <button class="task-detail-action-btn">
-                <lightning-icon icon-name="utility:dayview" size="small" alternative-text="Day"></lightning-icon>
-                Add to "My day"
-            </button>
-        </section>
-
-        <section class="task-details-content-section">
-            <button class="task-detail-action-btn task-detail-action-btn--bordered">
-                <lightning-icon icon-name="utility:reminder" size="small" alternative-text="Reminder"></lightning-icon>
-                <div>
-                    <span if:false={task.details.remind}>Add a reminder</span>
-
-                    <span if:true={task.details.remind}>
-                        <strong>Remind me on <lightning-formatted-date-time value={task.details.remind}></lightning-formatted-date-time></strong>
-                    </span>
-                </div>
-                <lightning-button-icon
-                    class="remove-btn"
-                    variant="bare"
-                    icon-name="utility:close"
-                    alternative-text="Remove"
-                    if:true={task.details.remind}
-                    onclick={removeReminder}>
-                </lightning-button-icon>
-            </button>
-            <button class="task-detail-action-btn task-detail-action-btn--bordered">
-                <lightning-icon icon-name="utility:date_time" size="small" alternative-text="Deadline"></lightning-icon> 
-                <div>
-                    <span if:false={task.details.deadline}>Add a deadline</span>
-
-                    <span if:true={task.details.deadline}>
-                        <strong>Deadline: <lightning-formatted-date-time value={task.details.deadline}></lightning-formatted-date-time></strong>
-                    </span>
-                </div>
-                <lightning-button-icon
-                    class="remove-btn"
-                    variant="bare"
-                    icon-name="utility:close"
-                    alternative-text="Remove"
-                    if:true={task.details.deadline}
-                    onclick={removeDeadline}>
-                </lightning-button-icon>
-            </button>
-        </section>
-
-        <section class="task-details-content-section">
-            <div class="add-task-notes-form">
-                <lightning-textarea name="Notes" label="" placeholder="Add some notes..."></lightning-textarea>
-                <lightning-button-group>
-                    <lightning-button name="addNotesBtn" variant="brand" label="Save" disabled></lightning-button>
-                </lightning-button-group>
-            </div>
-        </section>
-    </lightning-card>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
 </template>

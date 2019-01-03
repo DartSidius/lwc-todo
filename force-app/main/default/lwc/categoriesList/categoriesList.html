@@ -4,7 +4,7 @@
             <div class="slds-nav-vertical__section">
                 <template for:each={categories} for:item="category">
                     <span key={category.Id}  class="slds-nav-vertical__item">
-                        <input type="radio" id={category.Id} name="category" value={category.label} />
+                        <input type="radio" id={category.Id} data-name={category.label} name="category" onchange={selectCategory} value={category.label} />
                         <label class="slds-nav-vertical__action" for={category.Id}>
                             <lightning-icon icon-name={category.icon} size="small" alternative-text={category.label}></lightning-icon>
                             <span class="slds-nav-vertical_radio-faux">{category.label}</span>

@@ -1,6 +1,9 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 
 export default class TasksList extends LightningElement {
+    @api category;
+    @track isToDo = true;
+    @track isTasks = false;
     @track tasks = [
         {
             Id: 1,

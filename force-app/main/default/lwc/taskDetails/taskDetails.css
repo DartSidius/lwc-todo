@@ -30,6 +30,13 @@
 .add-task-notes-form lightning-button-group {
     margin-top: .5rem;
 }
-.remove-btn {
+.remove-btn, .mark-as-important-btn {
     margin-left: auto; 
+}
+.custom-modal__heading {
+    text-align: left;
+}
+.custom-modal .slds-modal__header {
+    display: flex;
+    align-items: center;
 }

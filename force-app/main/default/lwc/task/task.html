@@ -14,10 +14,13 @@
                             <lightning-formatted-date-time value={task.details.deadline}></lightning-formatted-date-time>
                         </li>
                         <li class="slds-item" if:true={task.details.remind}>
-                            <lightning-icon icon-name="utility:notification" size="xx-small" alternative-text="Notifier"></lightning-icon>     
+                            <lightning-icon icon-name="utility:notification" size="xx-small" alternative-text="Reminder"></lightning-icon>     
                         </li>
                         <li class="slds-item" if:true={task.details.notes}>
-                            <lightning-icon icon-name="utility:file" size="xx-small" alternative-text="Notifier"></lightning-icon>     
+                            <lightning-icon icon-name="utility:file" size="xx-small" alternative-text="Notes"></lightning-icon>     
+                        </li>
+                        <li class="slds-item">
+                            <lightning-icon icon-name="utility:attach" size="xx-small" alternative-text="Attachments"></lightning-icon>     
                         </li>
                     </ul>
                 </div>

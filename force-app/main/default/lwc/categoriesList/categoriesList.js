@@ -10,4 +10,8 @@ export default class CategoriesList extends LightningElement {
             icon: "standard:lead_list"
         });
     }
+
+    selectCategory(event) {
+        console.log(event.target.dataset.name);
+    }
 }

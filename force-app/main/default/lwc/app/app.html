@@ -5,18 +5,17 @@
                 <c-categories-list categories={categories}></c-categories-list>
             </span>
         </div>
-        <div class="slds-col slds-size_6-of-12">
+        <div class="slds-col slds-size_9-of-12">
             <span>
                 <c-tasks-list 
+                    category="Todo"
                     onimportantmark={addToImportant}
                     ontaskselect={getSelectedTaskDetails}>
                 </c-tasks-list>
             </span>
         </div>
-        <div if:true={task} class="slds-col slds-size_3-of-12">
-            <span>
-                <c-task-details task={task}></c-task-details>
-            </span>
+        <div if:true={task}>
+            <c-task-details task={task}></c-task-details>
         </div>
     </div>
 </template>
