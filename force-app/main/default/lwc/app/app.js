@@ -28,6 +28,7 @@ export default class App extends LightningElement {
         }
     ];
     @track task;
+    @track selectedCategory = this.categories[0];
 
     addToImportant(event) {
         let changedCategory = this.categories.find(cat => cat.label === event.detail.category);
@@ -38,5 +39,9 @@ export default class App extends LightningElement {
 
     getSelectedTaskDetails(event) {
         this.task = event.detail;
+    }
+
+    handleSelectCategory(event) {
+        this.selectedCategory = event.detail;
     }
 }

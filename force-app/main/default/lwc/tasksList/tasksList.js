@@ -2,8 +2,7 @@ import { LightningElement, track, api } from 'lwc';
 
 export default class TasksList extends LightningElement {
     @api category;
-    @track isToDo = true;
-    @track isTasks = false;
+
     @track tasks = [
         {
             Id: 1,
@@ -59,6 +58,26 @@ export default class TasksList extends LightningElement {
             }
         }
     ];
+
+    get isTodo() {
+        return this.category.label === "To do";
+    }
+
+    get isTasks() {
+        return this.category.label === "Tasks";
+    }
+
+    get isMyday() {
+        return this.category.label === "My day";
+    }
+
+    get isImportant() {
+        return this.category.label === "Important";
+    }
+
+    get today() {
+        return Date.now();
+    }
 
     handleSaveTask(event) {
         this.tasks.push({
