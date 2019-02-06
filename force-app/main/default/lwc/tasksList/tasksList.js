@@ -58,6 +58,10 @@ export default class TasksList extends LightningElement {
             }
         }
     ];
+    
+    get importantTasks() {
+        return this.tasks.filter(task => task.isImportant === true);
+    }
 
     get isTodo() {
         return this.category.label === "To do";

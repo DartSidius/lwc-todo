@@ -15,7 +15,7 @@
         </template>
 
         <template if:true={isImportant}>
-            <template for:each={tasks} for:item="task">
+            <template for:each={importantTasks} for:item="task">
                 <c-task key={task.Id} task={task}></c-task>
             </template>
         </template>   

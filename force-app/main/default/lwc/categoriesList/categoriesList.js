@@ -19,6 +19,7 @@ export default class CategoriesList extends LightningElement {
         for(let i = 0; i < items.length; i++) {
             if(items[i].dataset.name === "My day") {
                 index = i;
+                break;
             }
         }
 

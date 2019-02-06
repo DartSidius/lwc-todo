@@ -12,6 +12,9 @@
             "c/create-form": [
                 "createForm/createForm.js"
             ],
+            "c/modal": [
+                "modal/modal.js"
+            ],
             "c/task": [
                 "task/task.js"
             ],
