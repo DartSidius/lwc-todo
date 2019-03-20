@@ -1,7 +1,12 @@
 <template>
     <div class="task slds-card slds-m-top_xx-small" ondblclick={selectTask}>
+        <div class="progress">
+            <div class="progress-line" style="width: 50%"></div>
+        </div>
+
         <div class="task-container">
             <lightning-input class="task-status-checkbox" type="checkbox" onchange={changeTaskStatus} label="" name="isDone"></lightning-input>
+            
             <div class="task-title-wrapper">
                 <span class="task-title" if:false={isTaskDone}>{task.title}</span>
                 <span class="task-title" if:true={isTaskDone}>
@@ -25,6 +30,7 @@
                     </ul>
                 </div>
             </div>
+
             <lightning-button-icon-stateful
                     class="mark-as-important-btn"
                     icon-name="utility:favorite"

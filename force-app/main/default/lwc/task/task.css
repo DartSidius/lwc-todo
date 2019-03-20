@@ -1,9 +1,6 @@
 .task {
     cursor: pointer;
 }
-.task:hover {
-    background-color: rgb(216, 237, 255);
-}
 .task-container {
     padding: .1rem 1rem;
     min-height: 50px; 
@@ -17,6 +14,7 @@
 .task-title {
     font-size: 12px;
     color: #34373d;
+    z-index: 2;
 }
 .task-details .slds-item {
     color: #767678;
@@ -27,4 +25,14 @@
 }
 .mark-as-important-btn {
     margin-left: auto; 
-} 
+}
+.progress {
+    width: 100%;
+    height: 101%;
+    overflow: hidden;
+    position: absolute;
+}
+.progress-line {
+    background-color: #e0e4df; 
+    height: 100%;
+}

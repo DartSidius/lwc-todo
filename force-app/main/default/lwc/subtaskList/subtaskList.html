@@ -1,18 +1,7 @@
 <template>
     <template if:true={subtasks}>
         <template for:each={subtasks} for:item="subtask">
-            <div class="subtask" key={subtask.Id}>
-                <div class="subtask-container">
-                    <lightning-input class="subtask-status-checkbox" type="checkbox" onchange={changeTaskStatus} label=""
-                        name="isDone"></lightning-input>
-                    <div class="subtask-title-wrapper">
-                        <span class="subtask-title" if:false={isTaskDone}>{subtask.title}</span>
-                        <span class="subtask-title" if:true={isTaskDone}>
-                            <strike>{subtask.title}</strike>
-                        </span>
-                    </div>
-                </div>
-            </div>
+            <c-task-step key={subtask.Id} step={subtask}></c-task-step>
         </template>
     </template>
 
