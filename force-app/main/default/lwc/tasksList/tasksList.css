@@ -14,3 +14,22 @@
 .create-task-form-wrapper {
     background-color: rgba(255,255,255,.5); 
 }
+
+.todo-list-item {
+
+}
+.todo-list-item__checkbox {
+    display: none;
+}
+.todo-list-item__label {
+    cursor: pointer;
+}
+.todo-list-item__content {
+    display: none;
+}
+.todo-list-item__checkbox:checked + .todo-list-item__label + .todo-list-item__content {
+    display: block;
+}
+.todo-list-item__checkbox:not(:checked) + .todo-list-item__label + .todo-list-item__content {
+    display: none;
+}

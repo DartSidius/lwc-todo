@@ -37,21 +37,61 @@
     </template>
     
     <template if:true={isTodo}>
-        <lightning-accordion allow-multiple-sections-open>
-            <lightning-accordion-section name="Outdated" label="Outdated">
+        <div class="todo-list-item slds-m-top_x-small">
+            <input type="checkbox" class="todo-list-item__checkbox" name="taskTimeState" id="outdated">
+            <label for="outdated" class="todo-list-item__label">
+                <lightning-badge label="Outdated"></lightning-badge>
+            </label>
+            <div class="todo-list-item__content">
                 <template for:each={tasks} for:item="task">
                     <c-task key={task.Id} task={task}></c-task>
                 </template>
-            </lightning-accordion-section>
-            <lightning-accordion-section name="Today" label="Today">This is the content area for section A
-            </lightning-accordion-section>
-            <lightning-accordion-section name="Tomorrow" label="Tomorrow">This is the content area for section B
-            </lightning-accordion-section>
-            <lightning-accordion-section name="WeekRange" label="Next week">This is the content area for section C
-            </lightning-accordion-section>
-            <lightning-accordion-section name="Later" label="Later">This is the content area for section D
-            </lightning-accordion-section>
-        </lightning-accordion>
+            </div>
+        </div>
+        <div class="todo-list-item slds-m-top_x-small">
+            <input type="checkbox" class="todo-list-item__checkbox" name="taskTimeState" id="today">
+            <label for="today" class="todo-list-item__label">
+                <lightning-badge label="Today"></lightning-badge>
+            </label>
+            <div class="todo-list-item__content">
+                <template for:each={tasks} for:item="task">
+                    <c-task key={task.Id} task={task}></c-task>
+                </template>
+            </div>
+        </div>
+        <div class="todo-list-item slds-m-top_x-small">
+            <input type="checkbox" class="todo-list-item__checkbox" name="taskTimeState" id="tomorrow">
+            <label for="tomorrow" class="todo-list-item__label">
+                <lightning-badge label="Tomorrow"></lightning-badge>
+            </label>
+            <div class="todo-list-item__content">
+                <template for:each={tasks} for:item="task">
+                    <c-task key={task.Id} task={task}></c-task>
+                </template>
+            </div>
+        </div>
+        <div class="todo-list-item slds-m-top_x-small">
+            <input type="checkbox" class="todo-list-item__checkbox" name="taskTimeState" id="nextWeek">
+            <label for="nextWeek" class="todo-list-item__label">
+                <lightning-badge label="Next week"></lightning-badge>
+            </label>
+            <div class="todo-list-item__content">
+                <template for:each={tasks} for:item="task">
+                    <c-task key={task.Id} task={task}></c-task>
+                </template>
+            </div>
+        </div>
+        <div class="todo-list-item slds-m-top_x-small">
+            <input type="checkbox" class="todo-list-item__checkbox" name="taskTimeState" id="later">
+            <label for="later" class="todo-list-item__label">
+                <lightning-badge label="Later"></lightning-badge>
+            </label>
+            <div class="todo-list-item__content">
+                <template for:each={tasks} for:item="task">
+                    <c-task key={task.Id} task={task}></c-task>
+                </template>
+            </div>
+        </div>
     </template>
     
     <template if:true={isTasks}>
