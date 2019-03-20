@@ -1,24 +1,26 @@
 <template>
     <div class="slds-grid slds-gutters">
         <div class="slds-col slds-size_3-of-12">
-            <span>
-                <c-categories-list 
-                    categories={categories}
-                    onselect={handleSelectCategory}>
-                </c-categories-list>
-            </span>
+            <c-categories-list 
+                categories={categories}
+                onselect={handleSelectCategory}>
+            </c-categories-list>
         </div>
-        <div class="slds-col slds-size_9-of-12">
-            <span>
-                <c-tasks-list 
-                    category={selectedCategory}
-                    onimportantmark={addToImportant}
-                    ontaskselect={getSelectedTaskDetails}>
-                </c-tasks-list>
-            </span>
+        <div class="slds-col slds-size_6-of-12">
+            <c-tasks-list 
+                category={selectedCategory}
+                onimportantmark={addToImportant}
+                ontaskselect={getSelectedTaskDetails}>
+            </c-tasks-list>
         </div>
-        <div if:true={task}>
-            <c-task-details task={task}></c-task-details>
+        <div class="slds-col slds-size_3-of-12">
+            <template if:true={task}>
+                <c-task-details task={task}></c-task-details>
+            </template>
+
+            <template if:false={task}>
+                <span>Pick task to see details</span>
+            </template>
         </div>
     </div>
 </template>
