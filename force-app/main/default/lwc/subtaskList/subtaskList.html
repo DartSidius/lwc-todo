@@ -1,0 +1,29 @@
+<template>
+    <template if:true={subtasks}>
+        <template for:each={subtasks} for:item="subtask">
+            <div class="subtask" key={subtask.Id}>
+                <div class="subtask-container">
+                    <lightning-input class="subtask-status-checkbox" type="checkbox" onchange={changeTaskStatus} label=""
+                        name="isDone"></lightning-input>
+                    <div class="subtask-title-wrapper">
+                        <span class="subtask-title" if:false={isTaskDone}>{subtask.title}</span>
+                        <span class="subtask-title" if:true={isTaskDone}>
+                            <strike>{subtask.title}</strike>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </template>
+
+    <template if:false={subtasks}>
+        <div class="slds-p-around_medium">
+            No subtasks for this Task
+        </div>
+    </template>
+
+    <div class="slds-p-around_medium">
+        <c-create-form btn-label="New Subtask" input-label="Subtask name" onsave={handleSaveCategory}>
+        </c-create-form>
+    </div>
+</template>

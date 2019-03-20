@@ -1,6 +1,29 @@
 <template>
     <lightning-card title={task.title} icon-name="custom:custom18">
-        
+        <div slot="actions">
+            <lightning-button-icon-stateful
+                class="mark-as-important-btn"
+                icon-name="utility:favorite"
+                selected={isImportant}
+                alternative-text="Mark as important"
+                onclick={markAsImportant}>
+            </lightning-button-icon-stateful>
+        </div>
+
+        <lightning-tabset>
+            <lightning-tab label="Details">
+                <c-task-info></c-task-info>
+            </lightning-tab>
+            <lightning-tab label="Subtasks">
+                <c-subtask-list subtasks={task.details.subtasks}></c-subtask-list>
+            </lightning-tab>
+            <lightning-tab label="Attachments">
+                <c-task-attachments></c-task-attachments>
+            </lightning-tab>
+            <lightning-tab label="Comments">
+                <c-task-comments></c-task-comments>
+            </lightning-tab>
+        </lightning-tabset>
     </lightning-card>
     <!-- <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1"
         class="slds-modal slds-fade-in-open custom-modal">

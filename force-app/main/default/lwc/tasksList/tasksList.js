@@ -14,7 +14,7 @@ export default class TasksList extends LightningElement {
                 deadline: '2020-10-10',
                 remind: '2020-10-09',
                 notes: 'Qwerty',
-                steps: [
+                subtasks: [
                     {
                         Id: 1, 
                         title: "step1"
@@ -45,7 +45,7 @@ export default class TasksList extends LightningElement {
             details: {
                 stepsCompleted: '0 of 2',
                 deadline: '2020-10-10',
-                steps: [
+                subtasks: [
                     {
                         Id: 1, 
                         title: "step1"

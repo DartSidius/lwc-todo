@@ -1,53 +1,62 @@
 <template>
     <lightning-card title={category.label} icon-name={category.icon}>
         <div slot="actions">
-            <!--slot for actions-->
+            <lightning-button-icon class="slds-m-left_x-small" icon-name="utility:adduser" alternative-text="Share"></lightning-button-icon>
+
+            <lightning-button-menu class="slds-m-left_x-small" alternative-text="Show menu">
+                <lightning-menu-item disabled value="DuplicateList" label="Duplicate List"></lightning-menu-item>
+                <lightning-menu-item value="EmailList" label="Email List"></lightning-menu-item>
+            </lightning-button-menu>
         </div>
-
-        <template if:true={isMyday}>
-            <div style="padding:0 1rem .7rem 1rem;">
-                <lightning-formatted-date-time value={today} month="short" day="2-digit" weekday="long">
-                </lightning-formatted-date-time>
-            </div>
-            <template for:each={tasks} for:item="task">
-                <c-task key={task.Id} task={task}></c-task>
-            </template>
-        </template>
-
-        <template if:true={isImportant}>
-            <template for:each={importantTasks} for:item="task">
-                <c-task key={task.Id} task={task}></c-task>
-            </template>
-        </template>   
-
-        <template if:true={isTasks}>
-            <template for:each={tasks} for:item="task">
-                <c-task key={task.Id} task={task}></c-task>
-            </template>
-        </template>     
-        
-        <template if:true={isTodo}>
-            <lightning-accordion allow-multiple-sections-open>
-                <lightning-accordion-section name="Outdated" label="Outdated">
-                    <template for:each={tasks} for:item="task">
-                        <c-task key={task.Id} task={task}></c-task>
-                    </template>
-                </lightning-accordion-section>
-                <lightning-accordion-section name="Today" label="Today">This is the content area for section A</lightning-accordion-section>
-                <lightning-accordion-section name="Tomorrow" label="Tomorrow">This is the content area for section B</lightning-accordion-section>
-                <lightning-accordion-section name="WeekRange" label="Next week">This is the content area for section C</lightning-accordion-section>
-                <lightning-accordion-section name="Later" label="Later">This is the content area for section D</lightning-accordion-section>
-            </lightning-accordion>
-        </template>
-        
-        <template if:true={isTasks}>
-            <div class="slds-p-around_medium">
-                <c-create-form
-                    btn-label = "New Task"
-                    input-label= "Task name"
-                    onsave={handleSaveTask}>
-                </c-create-form>
-            </div>
-        </template>
     </lightning-card>
+
+    <template if:true={isMyday}>
+        <span class="slds-badge slds-m-top_x-small slds-m-bottom_x-small">
+            <lightning-formatted-date-time value={today} month="short" day="2-digit" weekday="long">
+            </lightning-formatted-date-time>
+        </span>
+    </template>
+    
+
+            <template if:true={isMyday}>
+                <template for:each={tasks} for:item="task">
+                    <c-task key={task.Id} task={task}></c-task>
+                </template>
+            </template>
+
+            <template if:true={isImportant}>
+                <template for:each={importantTasks} for:item="task">
+                    <c-task key={task.Id} task={task}></c-task>
+                </template>
+            </template>   
+
+            <template if:true={isTasks}>
+                <template for:each={tasks} for:item="task">
+                    <c-task key={task.Id} task={task}></c-task>
+                </template>
+            </template>     
+            
+            <template if:true={isTodo}>
+                <lightning-accordion allow-multiple-sections-open>
+                    <lightning-accordion-section name="Outdated" label="Outdated">
+                        <template for:each={tasks} for:item="task">
+                            <c-task key={task.Id} task={task}></c-task>
+                        </template>
+                    </lightning-accordion-section>
+                    <lightning-accordion-section name="Today" label="Today">This is the content area for section A</lightning-accordion-section>
+                    <lightning-accordion-section name="Tomorrow" label="Tomorrow">This is the content area for section B</lightning-accordion-section>
+                    <lightning-accordion-section name="WeekRange" label="Next week">This is the content area for section C</lightning-accordion-section>
+                    <lightning-accordion-section name="Later" label="Later">This is the content area for section D</lightning-accordion-section>
+                </lightning-accordion>
+            </template>
+            
+            <template if:true={isTasks}>
+                <div class="slds-p-around_medium">
+                    <c-create-form
+                        btn-label = "New Task"
+                        input-label= "Task name"
+                        onsave={handleSaveTask}>
+                    </c-create-form>
+                </div>
+            </template>
 </template>
